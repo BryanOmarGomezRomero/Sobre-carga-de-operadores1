@@ -38,10 +38,12 @@ public:
     }
 
     // Sobrecarga del operador ==
+    // Este operador compara dos objetos de la clase Empleado para verificar
+    // si sus ClaveEmpleado son iguales. Devuelve true si son iguales y false en caso contrario.
     bool operator==(const Empleado& otro) const {
         return ClaveEmpleado == otro.ClaveEmpleado;
     }
-
+    
     // Sobrecarga del operador !=
     bool operator!=(const Empleado& otro) const {
         return ClaveEmpleado != otro.ClaveEmpleado;
@@ -57,7 +59,10 @@ public:
         return ClaveEmpleado > otro.ClaveEmpleado;
     }
 
+
     // Sobrecarga del operador <<
+    //  para imprimir detalles de un objeto Empleado en un flujo de salida (como cout).
+    // en este caso uso os
     friend ostream& operator<<(ostream& os, const Empleado& empleado) {
         os << "Clave: " << empleado.ClaveEmpleado << endl;
         os << "Nombre: " << empleado.Nombre << endl;
@@ -68,12 +73,15 @@ public:
     }
 
     // Sobrecarga del operador >>
+    // Sirve para leer detalles de un objeto Empleado desde un flujo de entrada (como cin).
+    // en este caso uso is
     friend istream& operator>>(istream& is, Empleado& empleado) {
         is >> empleado.ClaveEmpleado >> empleado.Nombre >> empleado.Domicilio >> empleado.Sueldo >> empleado.ReportaA;
         return is;
     }
 
     // Sobrecarga del operador +
+    // permite sumar operadores que de otro modo no se podria
     Empleado operator+(const Empleado& otro) const {
         Empleado resultado = *this;
         resultado.Sueldo += otro.Sueldo;
@@ -106,7 +114,7 @@ int main() {
 
                 if (clave == 1 || clave == 2) {
                     cout << "Ingrese el nuevo domicilio: ";
-                    cin.ignore(); // Limpiar el buffer del teclado
+                    cin.ignore(); // limpia
                     getline(cin, nuevoDomicilio);
 
                     if (clave == 1) {
@@ -190,4 +198,3 @@ int main() {
 
     return 0;
 }
-//2
